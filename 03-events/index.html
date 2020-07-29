@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Shopping</title>
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <link rel="stylesheet" type="text/css" href="style.css" />
+</head>
+<body>
+  <div class="nav-bar"></div>
+  <div id="app">
+    <div class="product">
+      <div class="product-image">
+        <img :src="image" :alt="altText">
+      </div>
+      <div class="product-info">
+        <h1>{{product}}</h1>
+        <p v-show="inStock">In Stock</p>
+        <p v-if="inventory > 0 && inventory <= 10">Just {{inventory}} left !!</p>
+        <ul>
+          <li v-for="detail in details">{{detail}}</li>
+        </ul>
+        <div v-for="variant in variants" :key="variant.variantId">
+          <p @mouseover="updateProduct(variant.variantImage)">{{variant.variantColor}}</p>
+        </div>
+        <p>
+          More products like this
+          <a :href="link" target="_blank">here</a>
+        </p>
+        <div>
+          <button v-on:click="addToCart">Add to Cart</button>
+          <div class="cart">
+            <p>Cart {{cart}}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+<script type="text/javascript">
+  const searchUrl = 'https://www.amazon.com.mx/s/ref=nb_sb_noss?url=search-alias%3Daps&field-keywords=';
+  const app = new Vue({
+    el: '#app',
+    data: {
+      product: 'Socks',
+      image: './assets/vmSocks-green-onWhite.jpg',
+      //https://www.vuemastery.com/images/challenges/vmSocks-blue-onWhite.jpg
+      altText: 'No image',
+      link: `${searchUrl}Socks`,
+      inventory: 100,
+      inStock: true,
+      details: ['80% cotton', '20% polyester', "Gender-neutral"],
+      variants: [
+        {
+          variantId: 2234,
+          variantColor: 'green',
+          variantImage: './assets/vmSocks-green-onWhite.jpg',
+        },
+        {
+          variantId: 2235,
+          variantColor: 'blue',
+          variantImage: './assets/vmSocks-blue-onWhite.jpg',
+        },
+      ],
+      cart: 0
+    },
+    methods: {
+      addToCart: function() {
+        this.cart += 1;
+      },
+      updateProduct: function(variantImage) {
+        this.image = variantImage;
+      },
+    }
+  });
+</script>
+</html>
