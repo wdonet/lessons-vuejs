@@ -29,3 +29,41 @@ data: {
   inStock: true,
 }
 ```
+
+### v-for
+Used for looping over collections
+
+1. Use `v-for` at a `<li>` tag
+```html
+<ul>
+  <li v-for="detail in details">{{detail}}</li>
+</ul>
+```
+2. Add a new `details` array at `data` Vue instance. Each detail in the array could be a string.
+```js
+data: {
+  details: ['80% cotton', '20% polyester'],
+}
+```
+3. Repeat the same for `variants` where the array has objects with and id and a color.
+```js
+data: {
+  variants: [
+    {
+      variantId: 2234,
+      variantColor: 'green'
+    },
+    {
+      variantId: 2235,
+      variantColor: 'blue'
+    },
+  ],
+}
+```
+4. Use the color as in detail case but the id to bind a key attribute for the div (very recommendable)
+```html
+<div v-for="variant in variants" :key="variant.variantId">
+  <p>{{variant.variantColor}}</p>
+</div>
+```
+

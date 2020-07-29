@@ -18,6 +18,12 @@
         <h1>{{product}}</h1>
         <p v-show="inStock">In Stock</p>
         <p v-if="inventory > 0 && inventory <= 10">Just {{inventory}} left !!</p>
+        <ul>
+          <li v-for="detail in details">{{detail}}</li>
+        </ul>
+        <div v-for="variant in variants" :key="variant.variantId">
+          <p>{{variant.variantColor}}</p>
+        </div>
         <p>
           More products like this
           <a :href="link" target="_blank">here</a>
@@ -27,6 +33,7 @@
   </div>
 </body>
 <script type="text/javascript">
+  const searchUrl = 'https://www.amazon.com.mx/s/ref=nb_sb_noss?url=search-alias%3Daps&field-keywords=';
   const app = new Vue({
     el: '#app',
     data: {
@@ -34,9 +41,20 @@
       image: './assets/vmSocks-green-onWhite.jpg',
       //https://www.vuemastery.com/images/challenges/vmSocks-blue-onWhite.jpg
       altText: 'No image',
-      link: 'https://www.amazon.com.mx/s/ref=nb_sb_noss?url=search-alias%3Daps&field-keywords=socks',
+      link: `${searchUrl}Socks`,
       inventory: 100,
       inStock: true,
+      details: ['80% cotton', '20% polyester', "Gender-neutral"],
+      variants: [
+        {
+          variantId: 2234,
+          variantColor: 'green'
+        },
+        {
+          variantId: 2235,
+          variantColor: 'blue'
+        },
+      ],
     },
   });
 </script>
