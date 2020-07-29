@@ -22,3 +22,20 @@ var app = new Vue({
 ```
 
 _Check how value in DOM also changes_
+
+### Bind data to attribute
+1. Create a link tag and a link property of data inside Vue instance
+```html
+<a :href="link">Search</a>
+```
+_The long way to do this is `v-bind:href`, the shorthand is only using a colon `:`_
+
+```js
+var app = new Vue({
+  el: '#app',
+  data: {
+    product: 'Socks'
+    link: 'https://www.google.com/search?q=product'
+  }
+});
+```

@@ -9,14 +9,18 @@
 <body>
   <div id="app">
     <h1>{{product}}</h1>
-    <p>My product is {{product}}</p>
+    <p>
+      My product is {{product}}
+      <a :href="link" target="_blank">Search</a>
+    </p>
   </div>
 </body>
 <script type="text/javascript">
-  var app = new Vue({
+  const app = new Vue({
     el: '#app',
     data: {
       product: 'Socks',
+      link: 'https://www.google.com/search?q=Socks',
     },
   });
 </script>
