@@ -46,4 +46,7 @@ Try other events like:
 - `@submit` on a form
 - `@keyup.enter` on a text input.  `enter` becomes a modifier which helps to know the pressed key
 
-Check: https://www.vuemastery.com/vue-cheat-sheet
+Check:
+
+- [vue-cheat-sheet](https://www.vuemastery.com/vue-cheat-sheet)
+- [Event Handling](https://www.vuemastery.com/courses/intro-to-vue-js/event-handling)
